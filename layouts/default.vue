@@ -7,7 +7,12 @@
 <style lang="scss" scoped>
 .content-wrapper {
   display: flex;
-  justify-content: center;
   width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+  .content-wrapper {
+    justify-content: center;
+  }
 }
 </style>
