@@ -6,7 +6,9 @@
       </div>
       <div @click="toggleExpand" class="name">
         <div>{{ item.title }}</div>
-        <div v-if="isTask(item)">{{ isExpanded ? "▲" : "▼" }}</div>
+        <div v-if="isTask(item) && item.subtasks.length">
+          {{ isExpanded ? "▲" : "▼" }}
+        </div>
       </div>
     </div>
 
