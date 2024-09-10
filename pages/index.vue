@@ -2,6 +2,7 @@
   <div class="wrapper">
     <h1>Task Manager</h1>
     <TaskList v-if="!loading" :tasks="tasks" />
+    <div v-else>Loading...</div>
   </div>
 </template>
 
@@ -23,7 +24,7 @@
 import { ref, onMounted } from "vue";
 import { useTaskStore } from "@/stores";
 
-const loading = ref(false);
+const loading = ref(true);
 
 const store = useTaskStore();
 const { tasks } = storeToRefs(store);

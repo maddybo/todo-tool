@@ -1,6 +1,7 @@
 <template>
   <ul class="task-list">
     <TaskItem v-for="task in tasks" :key="task.id" :item="task" />
+    <div v-if="!tasks.length">Brak zadań...</div>
   </ul>
 </template>
 
