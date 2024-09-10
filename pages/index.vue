@@ -5,6 +5,20 @@
   </div>
 </template>
 
+<style lang="scss" scoped>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+}
+
+@media only screen and (max-width: 600px) {
+  .wrapper {
+    width: 100%;
+  }
+}
+</style>
+
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useTaskStore } from "@/stores";
@@ -24,17 +38,3 @@ onMounted(async () => {
   loading.value = false;
 });
 </script>
-
-<style lang="scss" scoped>
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-}
-
-@media only screen and (max-width: 600px) {
-  .wrapper {
-    width: 100%;
-  }
-}
-</style>

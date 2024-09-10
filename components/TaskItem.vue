@@ -5,7 +5,8 @@
         <template v-if="item.done">✔️</template>
       </div>
       <div @click="toggleExpand" class="name">
-        {{ item.title }}
+        <div>{{ item.title }}</div>
+        <div v-if="isTask(item)">{{ isExpanded ? "▲" : "▼" }}</div>
       </div>
     </div>
 
@@ -22,6 +23,50 @@
     </ul>
   </li>
 </template>
+
+<style scoped lang="scss">
+.task {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-sizing: border-box;
+  .task-data {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    gap: 12px;
+    transition: opacity 0.5s;
+    opacity: 1;
+    .tick {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 2px solid #eeca72;
+      border-radius: 100%;
+      font-size: 0.5rem;
+      cursor: pointer;
+    }
+    .name {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+    &.done {
+      opacity: 0.5;
+    }
+  }
+  .subtasks {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-top: 12px;
+  }
+}
+</style>
 
 <script setup lang="ts">
 import { ref } from "vue";
@@ -61,47 +106,3 @@ const isTask = (item: Task | SubTask): item is Task => {
   return "subtasks" in item;
 };
 </script>
-
-<style scoped lang="scss">
-.task {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  box-sizing: border-box;
-  .task-data {
-    display: flex;
-    align-items: center;
-    box-sizing: border-box;
-    gap: 12px;
-    transition: opacity 2s;
-    opacity: 1;
-    .tick {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 32px;
-      height: 32px;
-      border: 2px solid #eeca72;
-      border-radius: 100%;
-      font-size: 0.5rem;
-      cursor: pointer;
-    }
-    .name {
-      cursor: pointer;
-      font-weight: 600;
-    }
-    &.done {
-      opacity: 0.5;
-      .name {
-        text-decoration: line-through;
-        color: grey;
-      }
-    }
-  }
-  .subtasks {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-}
-</style>
