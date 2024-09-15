@@ -72,7 +72,7 @@ export const useTaskStore = defineStore("taskStore", () => {
     if (task) {
       if (task.subtasks.some((subtask) => !subtask.done)) {
         // Nie było info w dokumentacji co w przypadku jak task nie ma oznaczonych
-        // subtasów jako done, więc przyjebałam, ze w tym momencie blokujemy oznaczanie
+        // subtasów jako done, więc przyjelam, ze w tym momencie blokujemy oznaczanie
         throw new Error(
           "Cannot mark task as done while it has unfinished subtasks."
         );
